@@ -3,62 +3,79 @@ import { DatePicker, Button, Form, Input, Row, Col, Select, Radio, } from 'antd'
 const { Option } = Select;
 
 class GridFormCom extends React.Component {
-    constructor(){
+    constructor() {
         super()
+        this.state = {
+        }
     }
 
-    onSave = () => {
-       
+    inputHandler = (e) => {
+        this.setState({[e.target.name]:[e.target.value]});
+        console.log({ ...this.state });
+    };
+
+    onSave = (e) => {
+        e.preventDefault();
     };
 
     render() {
         return (
             <>
-                <Form onFinish={this.onSave} autoComplete="off" >
+                <center><h2>Employe</h2></center>
+                <hr/>
+                <Form  autoComplete="off" >
                     <Row>
                         <Col>
                             <br />
                             <Form.Item
                                 name="firstname"
                                 style={{ width: "320px" }}
-                                rules={[{required: true }]} 
+                                rules={[{ required: true }]}
                             >
                                 <label>First name</label>
-                                <Input placeholder="firstname" />
+                                <Input placeholder="firstname" name="firstName" onChange={(e) => this.inputHandler(e)} />
                             </Form.Item>
                         </Col>
-                        
+
                         <Col>
                             <br />
                             <Form.Item name="lastname" style={{ width: "320px" }}
-                            rules={[{required: true }]}  >
+                                rules={[{ required: true }]}  >
                                 <label>Last name</label>
-                                <Input placeholder="lastname" />
+                                <Input placeholder="lastname"  name="lastName" onChange={(e) => this.inputHandler(e)} />
                             </Form.Item>
                         </Col>
                         <Col>
                             <br />
-                            <Form.Item name="date of birth" rules={[{required: true }]} >
+                            <Form.Item name="date of birth" rules={[{ required: true }]} >
                                 <label>DOB</label>
-                                <br/>
-                                <DatePicker style={{ width: "320px" }}/>
+                                <br />
+                                <DatePicker style={{ width: "320px" }} name="dob" onChange={(e) => this.inputHandler(e)} />
                             </Form.Item>
                         </Col>
                         <Col>
                             <br />
-                            <Form.Item name="desgination" 
+                            <Form.Item name="join" rules={[{ required: true }]} >
+                                <label>Date of joining</label>
+                                <br />
+                                <DatePicker style={{ width: "320px" }} name="dJoin" onChange={(e) => this.inputHandler(e)} />
+                            </Form.Item>
+                        </Col>
+                        <Col>
+                            <Form.Item name="desgination"
                                 rules={[{ required: true }]}
                                 style={{ width: "320px" }}
                             >
                                 <label>Desgination</label>
                                 <Select placeholder="Please select a desgination">
-                                    <Option value="coo">COO</Option>
-                                    <Option value="ceo ">CEO </Option>
+                                    {
+                                        this.state.desginationList?.map((item, index) => (<Option key={index}>{item}</Option>))
+                                    }
                                 </Select>
                             </Form.Item>
                         </Col>
                         <Col>
-                            <Form.Item name="department" 
+                            <Form.Item name="department"
                                 rules={[{ required: true }]}
                                 style={{ width: "320px" }}
                             >
@@ -70,49 +87,7 @@ class GridFormCom extends React.Component {
                             </Form.Item>
                         </Col>
                         <Col>
-                            <Form.Item name="email" style={{ width: "320px" }} rules={[{ required: true }]}>
-                                <label>Email</label>
-                                <Input placeholder="email"/>
-                            </Form.Item>
-                        </Col>
-                        <Col>
-                            <Form.Item name="phone" style={{ width: "320px" }} rules={[{ required: true }]}>
-                                <label>Phone</label>
-                                <Input placeholder="phone" />
-                            </Form.Item>
-                        </Col>
-                        <Col>
-                            <Form.Item name="phone"
-                                rules={[{ required: true}]}
-                                style={{ width: "320px" }}
-                            >
-                                <label>Country</label>
-                                <Select placeholder="Please select a country">
-                                    <Option value="india">India</Option>
-                                    <Option value="china ">China </Option>
-                                </Select>
-                            </Form.Item>
-                        </Col>
-                        <Col>
-                            <Form.Item name="state"
-                                rules={[{ required: true}]}
-                                style={{ width: "320px" }}
-                            >
-                                <label>State</label>
-                                <Select placeholder="Please select a state" rules={[{ required: true}]}>
-                                    <Option value="hyderabad">Hyderabad</Option>
-                                    <Option value="delhi ">Delhi</Option>
-                                </Select>
-                            </Form.Item>
-                        </Col>
-                        <Col>
-                            <Form.Item name="city" rules={[{ required: true}]} style={{ width: "320px" }}>
-                                <label>City</label>
-                                <Input placeholder="city" />
-                            </Form.Item>
-                        </Col>
-                        <Col>
-                            <Form.Item  name="gender" rules={[{ required: true}]} style={{ width: "320px" }}>
+                            <Form.Item name="gender" rules={[{ required: true }]} style={{ width: "320px" }}>
                                 <label>Gender</label>
                                 <br />
                                 <Radio.Group>
@@ -122,20 +97,32 @@ class GridFormCom extends React.Component {
                             </Form.Item>
                         </Col>
                         <Col>
-                            <Form.Item  name="zip code" rules={[{ required: true}]} style={{ width: "320px" }}>
-                                <label>Zip Code</label>
-                                <Input placeholder="500000" />
+                            <Form.Item name="phone number" style={{ width: "320px" }} rules={[{ required: true }]}>
+                                <label>Phone Number</label>
+                                <Input placeholder="phone number" name="phoneNo" onChange={(e) => this.inputHandler(e)} />
+                            </Form.Item>
+                        </Col>
+                        <Col>
+                            <Form.Item name="email" style={{ width: "320px" }} rules={[{ required: true }]}>
+                                <label>Email</label>
+                                <Input placeholder="email" name="emailId" onChange={(e) => this.inputHandler(e)} />
+                            </Form.Item>
+                        </Col>
+                        <Col>
+                            <Form.Item name="experience " style={{ width: "320px" }} rules={[{ required: true }]}>
+                                <label>Experience </label>
+                                <Input placeholder="experience " name="experience" onChange={(e) => this.inputHandler(e)} />
                             </Form.Item>
                         </Col>
                     </Row>
                     <Form.Item>
-                    <Button
-                        htmlType="Submit"
-                        type="primary"
-                    >
-                        Save
-                    </Button>
-                    </Form.Item>                
+                        <Button
+                            htmlType="Submit"
+                            type="primary"
+                            onClick={this.onSave}>
+                            Save
+                        </Button>
+                    </Form.Item>
                 </Form>
             </>
         )
