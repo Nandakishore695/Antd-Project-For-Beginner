@@ -1,5 +1,5 @@
 import React from "react";
-import { Button, DatePicker, Form, Input, Row, Col, Select } from 'antd'
+import { DatePicker, Form, Input, Row, Col, Select, Radio } from 'antd'
 const { Option } = Select;
 
 class GridFormCom extends React.Component {
@@ -10,39 +10,98 @@ class GridFormCom extends React.Component {
                 <Form>
                     <Row>
                         <Col>
-                            <Form.Item name="firstname" label="First name" >
+                            <Form.Item label="First name" style={{ width: "320px" }} >
                                 <Input placeholder="firstname" />
                             </Form.Item>
                         </Col>
                         <Col>
-                            <Form.Item name="lastname" label="Last name" >
+                            <Form.Item label="Last name" style={{ width: "320px" }} >
                                 <Input placeholder="lastname" />
                             </Form.Item>
                         </Col>
                         <Col>
-                            <Form.Item name="title" label="DOB">
+                            <Form.Item label="DOB">
                                 <DatePicker />
                             </Form.Item>
                         </Col>
                         <Col>
                             <Form.Item
-                                name="select"
-                                label="Select"
-                                rules={[{ required: true, message: 'Please select your country!' }]}
+                                label="Desgination"
+                                rules={[{ required: true, message: 'Please select your desgination!' }]}
+                                style={{ width: "320px" }}
                             >
-                                <Select placeholder="Please select a country">
-                                    <Option value="china">China</Option>
-                                    <Option value="usa">U.S.A</Option>
+                                <Select placeholder="Please select a desgination">
+                                    <Option value="coo">COO</Option>
+                                    <Option value="ceo ">CEO </Option>
                                 </Select>
                             </Form.Item>
                         </Col>
-                        <Button
-                            type="button"
-                        >
-                            Save
-                        </Button>
+                        <Col>
+                            <Form.Item
+                                label="Department"
+                                rules={[{ required: true, message: 'Please select your department!' }]}
+                                style={{ width: "320px" }}
+                            >
+                                <Select placeholder="Please select a department">
+                                    <Option value="coo">COO</Option>
+                                    <Option value="ceo ">CEO </Option>
+                                </Select>
+                            </Form.Item>
+                        </Col>
+                        <Col>
+                            <Form.Item label="Email" style={{ width: "320px" }}>
+                                <Input placeholder="email" />
+                            </Form.Item>
+                        </Col>
+                        <Col>
+                            <Form.Item label="Phone" style={{ width: "320px" }}>
+                                <Input placeholder="phone   " />
+                            </Form.Item>
+                        </Col>
+                        <Col>
+                            <Form.Item
+                                label="Country"
+                                rules={[{ required: true, message: 'Please select your country!' }]}
+                                style={{ width: "320px" }}
+                            >
+                                <Select placeholder="Please select a country">
+                                    <Option value="india">India</Option>
+                                    <Option value="china ">China </Option>
+                                </Select>
+                            </Form.Item>
+                        </Col>
+                        <Col>
+                            <Form.Item
+                                label="State"
+                                rules={[{ required: true, message: 'Please select your state!' }]}
+                                style={{ width: "320px" }}
+                            >
+                                <Select placeholder="Please select a state">
+                                    <Option value="hyderabad">Hyderabad</Option>
+                                    <Option value="delhi ">Delhi</Option>
+                                </Select>
+                            </Form.Item>
+                        </Col>
+                        <Col>
+                            <Form.Item label="City" style={{ width: "320px" }}>
+                                <Input placeholder="city" />
+                            </Form.Item>
+                        </Col>
+                        <Col>
+                            <Form.Item label="Gender">
+                                <Radio.Group>
+                                    <Radio value="male"> Male </Radio>
+                                    <Radio value="female"> Female </Radio>
+                                </Radio.Group>
+                            </Form.Item>
+                        </Col>
+                        <Col>
+                            <Form.Item label="Zip Code" style={{ width: "320px" }}>
+                                <Input placeholder="500000" />
+                            </Form.Item>
+                        </Col>
                     </Row>
-                </Form> 
+                </Form>
             </>
         )
     }
