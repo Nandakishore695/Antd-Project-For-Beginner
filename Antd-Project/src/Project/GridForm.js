@@ -32,7 +32,7 @@ class GridFormCom extends React.Component {
                                 style={{ width: "320px" }}
                                 rules={[{ required: true }]}
                             >
-                                <label>First name</label>
+                                <label><b>First name</b></label>
                                 <Input placeholder="firstname" name="firstName" onChange={(e) => this.inputHandler(e)} />
                             </Form.Item>
                         </Col>
@@ -41,14 +41,14 @@ class GridFormCom extends React.Component {
                             <br />
                             <Form.Item name="lastname" style={{ width: "320px" }}
                                 rules={[{ required: true }]}  >
-                                <label>Last name</label>
+                                <label><b>Last name</b></label>
                                 <Input placeholder="lastname"  name="lastName" onChange={(e) => this.inputHandler(e)} />
                             </Form.Item>
                         </Col>
                         <Col>
                             <br />
                             <Form.Item name="date of birth" rules={[{ required: true }]} >
-                                <label>DOB</label>
+                                <label><b>DOB</b></label>
                                 <br />
                                 <DatePicker style={{ width: "320px" }} name="dob" onChange={(e) => this.inputHandler(e)} />
                             </Form.Item>
@@ -56,7 +56,7 @@ class GridFormCom extends React.Component {
                         <Col>
                             <br />
                             <Form.Item name="join" rules={[{ required: true }]} >
-                                <label>Date of joining</label>
+                                <label><b>Date of joining</b></label>
                                 <br />
                                 <DatePicker style={{ width: "320px" }} name="dJoin" onChange={(e) => this.inputHandler(e)} />
                             </Form.Item>
@@ -66,7 +66,7 @@ class GridFormCom extends React.Component {
                                 rules={[{ required: true }]}
                                 style={{ width: "320px" }}
                             >
-                                <label>Desgination</label>
+                                <label><b>Desgination</b></label>
                                 <Select placeholder="Please select a desgination">
                                     {
                                         this.state.desginationList?.map((item, index) => (<Option key={index}>{item}</Option>))
@@ -79,7 +79,7 @@ class GridFormCom extends React.Component {
                                 rules={[{ required: true }]}
                                 style={{ width: "320px" }}
                             >
-                                <label>Department</label>
+                                <label><b>Department</b></label>
                                 <Select placeholder="Please select a department">
                                     <Option value="coo">COO</Option>
                                     <Option value="ceo ">CEO </Option>
@@ -88,7 +88,7 @@ class GridFormCom extends React.Component {
                         </Col>
                         <Col>
                             <Form.Item name="gender" rules={[{ required: true }]} style={{ width: "320px" }}>
-                                <label>Gender</label>
+                                <label><b>Gender</b></label>
                                 <br />
                                 <Radio.Group>
                                     <Radio value="male"> Male </Radio>
@@ -98,19 +98,19 @@ class GridFormCom extends React.Component {
                         </Col>
                         <Col>
                             <Form.Item name="phone number" style={{ width: "320px" }} rules={[{ required: true }]}>
-                                <label>Phone Number</label>
+                                <label><b>Phone Number</b></label>
                                 <Input placeholder="phone number" name="phoneNo" onChange={(e) => this.inputHandler(e)} />
                             </Form.Item>
                         </Col>
                         <Col>
                             <Form.Item name="email" style={{ width: "320px" }} rules={[{ required: true }]}>
-                                <label>Email</label>
+                                <label><b>Email</b></label>
                                 <Input placeholder="email" name="emailId" onChange={(e) => this.inputHandler(e)} />
                             </Form.Item>
                         </Col>
                         <Col>
                             <Form.Item name="experience " style={{ width: "320px" }} rules={[{ required: true }]}>
-                                <label>Experience </label>
+                                <label><b>Experience</b></label>
                                 <Input placeholder="experience " name="experience" onChange={(e) => this.inputHandler(e)} />
                             </Form.Item>
                         </Col>
