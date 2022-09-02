@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
-import { Form, Button, Row, Col, Input, Select, Radio } from 'antd'
+import { Form, Button, Row, Col, Input, Select, Radio,Table } from 'antd';
 
-function GridFormCom() {
+const GridFormCom = () => {
     const [firstName, setFirstName] = useState('');
     const [lastName, setLastName] = useState('');
     const [dob, setDob] = useState('');
@@ -12,17 +12,32 @@ function GridFormCom() {
     const [phoneNo, setPhoneNo] = useState('');
     const [emailId, setEmailId] = useState('');
     const [experience, setExperience] = useState('');
+    const [allEntry, setAllEntry] = useState([]);
 
-
-
-    const [allEntry, setAllEntry] = useState("");
-
+    const columns = [
+        {
+          title: 'EmployeName',
+          dataIndex: 'firstName',
+        },
+        {
+          title: 'Desgination',
+          dataIndex: 'lastName',
+        },
+        {
+          title: 'Department',
+          dataIndex: 'emailId',
+        },
+        {
+          title: 'Date of join',
+          dataIndex: 'dJoin',
+        },
+      ];
 
     const onSave = (event) => {
         event.preventDefault();
-        const val = { firstName, lastName, dob, dJoin, desgination, department, gender, phoneNo, emailId, experience };
-        setAllEntry([val]);
-        console.log(val);
+        const obj = { firstName:firstName, lastName:lastName, dob:dob, dJoin:dJoin, gender:gender, phoneNo:phoneNo, emailId:emailId, experience:experience };
+        setAllEntry([...allEntry,obj]);
+        console.log(allEntry);
         setFirstName("");
         setLastName("");
         setDob("");
@@ -49,7 +64,7 @@ function GridFormCom() {
                             rules={[{ required: true }]}
                         >
                             <label><b>First name</b></label>
-                            <Input placeholder="firstname" value={firstName} onChange={(event) => setFirstName(event.target.value)} />
+                            <Input placeholder="firstname" name='firstName' value={firstName} onChange={(event) => setFirstName(event.target.value)} />
                         </Form.Item>
                     </Col>
                     <Col>
@@ -57,7 +72,7 @@ function GridFormCom() {
                         <Form.Item name="lastname" style={{ width: "320px" }}
                             rules={[{ required: true }]}  >
                             <label><b>Last name</b></label>
-                            <Input placeholder="lastname" value={lastName} onChange={(event) => setLastName(event.target.value)} />
+                            <Input placeholder="lastname" name='lastName'value={lastName} onChange={(event) => setLastName(event.target.value)} />
                         </Form.Item>
                     </Col>
                     <Col>
@@ -143,6 +158,7 @@ function GridFormCom() {
                     </Button>
                 </Form.Item>
             </Form>
+            <Table columns={columns}   dataSource={allEntry} />
         </>
     )
 }
