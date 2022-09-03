@@ -1,10 +1,14 @@
 import React, { useState } from "react";
+import GridTable from "./QualificationTable";
 import { PlusCircleOutlined } from '@ant-design/icons';
-import { Modal, Select, Form } from 'antd'
-const { Option } = Select;
+import { Modal, Form, Input } from 'antd'
+
 
 function AddQualificationPopup() {
     const [isModalVisible, setIsModalVisible] = useState(false);
+    const [degree, setDgree] = useState('');
+    const [btech, setBtech] = useState('');
+    const [that, setThat] = useState([]);
 
     const showModal = () => {
         setIsModalVisible(true);
@@ -12,11 +16,16 @@ function AddQualificationPopup() {
 
     const handleOk = () => {
         setIsModalVisible(false);
+        const sObj = { degree: degree, btech:btech }
+        setThat([...that, sObj])
+        console.log(that)
+        
     };
 
     const handleCancel = () => {
         setIsModalVisible(false);
     };
+
 
     return (
         <>
@@ -27,20 +36,25 @@ function AddQualificationPopup() {
                 <Form>
                     <Form.Item>
                         <label>Degree</label>
-                        <Select
-                            placeholder="Select a option"
+                        <Input placeholder="Select a option"
                             style={{ width: "150px" }}
+                            value={btech} onChange={(e) => setBtech(e.target.value)} />
+                        {/* <Select
+                            placeholder="Select a option"
+                            style={{ width: "150px" }} 
                         >
                             <Option value="residential">B.Sc</Option>
                             <Option value="rental">B.A</Option>
                             <Option value="rental">B.Com</Option>
                             <Option value="rental">B.B.A</Option>
                             <Option value="rental">B.Ed</Option>
-                        </Select>
+                        </Select> */}
                     </Form.Item>
                     <Form.Item>
                         <label>B.Tech</label>
-                        <Select
+                        <Input placeholder="Select a option" style={{ width: "150px" }}
+                            value={degree} onChange={(e) => setDgree(e.target.value)} />
+                        {/* <Select
                             placeholder="Select a option"
                             style={{ width: "150px" }}
                         >
@@ -49,10 +63,11 @@ function AddQualificationPopup() {
                             <Option value="rental">Mechnical</Option>
                             <Option value="rental">Electrical</Option>
                             <Option value="rental">Electronic</Option>
-                        </Select>
+                        </Select> */}
                     </Form.Item>
                 </Form>
             </Modal>
+            <GridTable data={that} />
         </>
     );
 };
